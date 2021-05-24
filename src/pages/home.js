@@ -93,7 +93,12 @@ export default  class Home extends React.Component {
                 console.log('Error')
                 }
                 
-                
+                let InputBox = '';
+                if (this.moodText === this.state.text[2]) {
+                      InputBox = <h1>will you tell us why?<input type="text"/></h1>;
+                } else {
+                      InputBox = '';
+                }
                 const NewMood = this.moodText
                 return <div className="body-container">
                                 <div className="wrapper-content" style={{border: '1px solid black',borderRadius: '30px',
@@ -122,7 +127,9 @@ export default  class Home extends React.Component {
                                                         </section> : null
                                         }
                                     </div>
-                                    
+                                    <div className="Input-div">
+                                        {InputBox}
+                                    </div>
                                 </div>
                         </div>//Down here I was thinking a text box could appear when the user says they are sad asking why People don't tend to want to fill out the reason they are happy but understanding why they are sad means you can try to cheer that person up
             }
