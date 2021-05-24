@@ -27,11 +27,20 @@
 .wrapper-content h1{
   font-size:50px;
 
+  animation: fadein 2s;
   margin-bottom:0;
   padding-top: 10px;
   align-items: center;
   display: flex;
   flex-direction:column;
+}
+@keyframes fadein {
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
 }
 .wrapper-content img {
 
@@ -49,6 +58,25 @@
   height: 60%;
 }
 .grid {
-    display: grid;
-    grid-gap: 30px;    
+	margin-left: auto;
+	margin-right: auto;
+	align-items: center;
+	justify-content: center;
+    grid-gap: 25%;
+	height: 60%;
+	display: flex;
 }
+.button {
+  border: 1px solid green;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  opacity: 0.8;
+  transition: 0.3s;
+}
+.button:hover {opacity: 1;}
+
+.button:active {opacity: 0;}

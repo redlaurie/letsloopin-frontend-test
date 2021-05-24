@@ -5,7 +5,7 @@ import ReactDOM from 'react-dom';
 import moment from "moment";
 
 // this was all programmed in VisualStudio for reference to editor
-
+// for all the Scss please follow /src/assets/scss/base.scss
 class Feeling extends React.Component {
   render() {
     return <h1>{this.props.feeling}</h1>
@@ -13,7 +13,7 @@ class Feeling extends React.Component {
 }
 class Date extends React.Component {
     render() {
-        return <h2>{this.props.date}</h2>
+        return <h2 style={{}}>{this.props.date}</h2>
     }
 }
 export default  class Home extends React.Component {
@@ -92,29 +92,39 @@ export default  class Home extends React.Component {
                 const date = moment().format('MMMM DD, YYYY')
                 console.log('Error')
                 }
+                
+                
                 const NewMood = this.moodText
                 return <div className="body-container">
                                 <div className="wrapper-content" style={{border: '1px solid black',borderRadius: '30px',
                                     backgroundColor: this.state.BackgroundColour, color: this.state.TextColour}}>
                                     <h2>{ date }</h2>
                                     <Feeling feeling={NewMood}/>
-                                    <div className="row" style={{}} >
+                                    <div className="row" style={{display: 'flex'}} >
                                         { //Sets buttons to hidden when mood is selected
-                                        this.state.AwaitingMood? <section className="grid" style={{gridTemplateColumns: `repeat(3, minmax(340px, 1fr))`,position:'absolute', left:100, bottom:400, right:100}}> 
+                                        this.state.AwaitingMood? <section className="grid" style={{gridTemplateColumns: `repeat(3, minmax(100%, 500fr))`}}> 
+
                                                                 <div className="col">
-                                                                    <button variant="contained" color="green" onClick={this.SetHappy}>Happy</button>
+                                                                    <button class="button" style={{backgroundColor: '#4CAF50'}} 
+                                                                                            onClick={this.SetHappy}>Happy</button>
                                                                 </div>
+
                                                                 <div className="col">
-                                                                     <button variant="danger" onClick={this.SetSad}>Sad</button>
+                                                                     <button class="button" style={{backgroundColor: '#f44336'}} 
+                                                                                                onClick={this.SetSad}>Sad</button>
                                                                 </div>
+
                                                                 <div className="col">
-                                                                     <button variant="primary" onClick={this.SetNeutral}>Neutral</button>
+                                                                     <button class="button" style={{backgroundColor: '#FFD700'}} 
+                                                                                        onClick={this.SetNeutral}>Neutral</button>
                                                                 </div>
+
                                                         </section> : null
                                         }
                                     </div>
+                                    
                                 </div>
-                        </div>
+                        </div>//Down here I was thinking a text box could appear when the user says they are sad asking why People don't tend to want to fill out the reason they are happy but understanding why they are sad means you can try to cheer that person up
             }
         }
 
