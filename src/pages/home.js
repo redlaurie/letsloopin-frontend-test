@@ -6,16 +6,19 @@ import moment from "moment";
 
 // this was all programmed in VisualStudio for reference to editor
 // for all the Scss please follow /src/assets/scss/base.scss
+
 class Feeling extends React.Component {
   render() {
     return <h1>{this.props.feeling}</h1>
   }
 }
+
 class Date extends React.Component {
     render() {
         return <h2 style={{}}>{this.props.date}</h2>
     }
 }
+
 export default  class Home extends React.Component {
     constructor(props) {
         super(props); // for some reason this constructor gets called twice and am unsure why
@@ -23,6 +26,8 @@ export default  class Home extends React.Component {
         this.SetSad = this.SetSad.bind(this)
         this.SetHappy = this.SetHappy.bind(this) // Here we are simply binding the buttons functions for calling later
         this.SetNeutral = this.SetNeutral.bind(this)
+        this.handleInputChange = this.handleInputChange.bind(this)
+        this.mySubmitHandler = this.mySubmitHandler.bind(this)
 
         //state variables
         this.state = {AwaitingMood: true, BackgroundColour: 'white', TextColour: 'grey',
@@ -31,6 +36,7 @@ export default  class Home extends React.Component {
         };
 
         this.moodText = this.state.text[0]
+        this.reasonForMood = ''
 
         console.log(this.moodText) // console logs for debugging
         console.log(this.props.moods)
@@ -83,6 +89,15 @@ export default  class Home extends React.Component {
         this.setState({AwaitingMood: false, BackgroundColour: newColor})
     }
 
+    mySubmitHandler() {
+        alert("You are submitting " + this.reasonForMood);
+    }
+
+    handleInputChange(text){
+        console.log(this.reasonForMood)
+        this.reasonForMood = text.target.value
+    }
+
     //Frontend 
     render(){
                 try {
@@ -95,10 +110,12 @@ export default  class Home extends React.Component {
                 
                 let InputBox = '';
                 if (this.moodText === this.state.text[2]) {
-                      InputBox = <h1>will you tell us why?<input type="text"/></h1>;
+                      InputBox = <h1>will you tell us why?<input type="text" onChange={this.handleInputChange}/>
+                                                        <input type="button" value="Submit?" onClick={this.mySubmitHandler}/></h1>;
                 } else {
                       InputBox = '';
                 }
+
                 const NewMood = this.moodText
                 return <div className="body-container">
                                 <div className="wrapper-content" style={{border: '1px solid black',borderRadius: '30px',
